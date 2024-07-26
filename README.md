@@ -1,4 +1,4 @@
-#seamount-icemount-PGtest
+# seamount-icemount-PGtest
 
 For MOM6, modified from the seamount test case in MOM6-examples, to test initialisation and spurious currents in a simple, 2D set up.
 
