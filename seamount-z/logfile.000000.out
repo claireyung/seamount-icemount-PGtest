@@ -349,7 +349,7 @@ MOM_coord_initialization: unknown
   MOM_ALE FATAL_CHECK_REMAPPING: False
   MOM_ALE REMAP_BOUND_INTERMEDIATE_VALUES: False
   MOM_ALE REMAP_BOUNDARY_EXTRAP: False
-  MOM_ALE INIT_BOUNDARY_EXTRAP: True
+  MOM_ALE INIT_BOUNDARY_EXTRAP: False
   MOM_ALE DEFAULT_ANSWER_DATE: 99991231
   MOM_ALE REMAPPING_USE_OM4_SUBCELLS: True
   MOM_ALE REMAPPING_ANSWER_DATE: 99991231
@@ -526,10 +526,8 @@ MOM_state_initialization: unknown
   trim_for_ice !INPUTDIR/SURFACE_HEIGHT_IC_FILE: INPUT/flatice0.nc
   trim_for_ice SURFACE_PRESSURE_SCALE: 8820.0
   trim_for_ice MIN_THICKNESS: 1.0E-12
-  trim_for_ice TRIM_IC_Z_TOLERANCE: 1.0E-14
-  trim_for_ice TRIMMING_USES_REMAPPING: True
-  trim_for_ice DEFAULT_ANSWER_DATE: 99991231
-  trim_for_ice REMAPPING_ANSWER_DATE: 99991231
+  trim_for_ice TRIM_IC_Z_TOLERANCE: 1.0E-05
+  trim_for_ice TRIMMING_USES_REMAPPING: False
   MOM_state_initialization REGRID_ACCELERATE_INIT: False
   MOM_state_initialization VELOCITY_CONFIG: zero
   MOM_state_initialization ODA_INCUPD: False
@@ -660,12 +658,6 @@ MOM_PressureForce_FV: unknown
   MOM_PressureForce_FV CALCULATE_SAL: False
   MOM USE_REGRIDDING: True
   MOM_PressureForce_FV MASS_WEIGHT_IN_PRESSURE_GRADIENT: True
-  MOM_PressureForce_FV MASS_WEIGHT_IN_PRESSURE_GRADIENT_IS: True
-  MOM_PressureForce_FV CORRECTION_INTXPA: True
-  MOM_PressureForce_FV CORRECTION_INTXPA_5PT: False
-  MOM_PressureForce_FV RESET_INTXPA_INTEGRAL: True
-  MOM_PressureForce_FV RESET_INTXPA_H_NONVANISHED: 1.0E-06
-  MOM_PressureForce_FV RESET_INTXPA_MASS_WEIGHT_CLEARANCE: 1.0E-08
   MOM_PressureForce_FV USE_INACCURATE_PGF_RHO_ANOM: False
   MOM_PressureForce_FV RECONSTRUCT_FOR_PRESSURE: True
   MOM_PressureForce_FV PRESSURE_RECONSTRUCTION_SCHEME: 1
@@ -1039,67 +1031,67 @@ MOM_Ice_Shelf_in domain decomposition:     1 X    1
    pe,   is,  ie,  js,  je,    isd, ied, jsd, jed
 
                                      time
-Total runtime                        11.959103
-Initialization                        0.289894
-Main loop                            11.146089
-Termination                           0.508374
-Ocean Initialization                  0.290965
-Ocean                                10.858608
-Ocean dynamics                        8.452762
-Ocean thermodynamics and tracers      1.462842
-Ocean Other                           0.932497
-(Ocean tracer advection)              0.194332
-(Ocean diabatic driver)               1.268249
+Total runtime                        11.634011
+Initialization                        0.204401
+Main loop                            11.050259
+Termination                           0.372538
+Ocean Initialization                  0.210455
+Ocean                                10.765369
+Ocean dynamics                        8.401588
+Ocean thermodynamics and tracers      1.418675
+Ocean Other                           0.934725
+(Ocean tracer advection)              0.194168
+(Ocean diabatic driver)               1.224236
 (Ocean continuity equation *)         0.000000
-(Ocean set BBL viscosity)             0.074273
-(Ocean message passing *)             0.004109
-(Ocean MOM_initialize_state)          0.043299
-(Ocean init message passing *)        0.000460
+(Ocean set BBL viscosity)             0.074075
+(Ocean message passing *)             0.003990
+(Ocean MOM_initialize_state)          0.031747
+(Ocean init message passing *)        0.000028
 (Ocean mixed layer restrat)           0.000000
-(Ocean collective diagnostics)        0.901167
+(Ocean collective diagnostics)        0.903719
 (Ocean Z-space diagnostics)           0.000000
-(Ocean ALE)                           1.105196
-(Stochastic EOS)                      0.000042
+(Ocean ALE)                           1.062023
+(Stochastic EOS)                      0.000044
 (SGS Temperature Variance)            0.000041
-Ice shelf                             0.162233
+Ice shelf                             0.160198
  Ice shelf halo updates               0.000003
-(Ocean diagnostics framework)         2.643980
+(Ocean diagnostics framework)         2.622739
 (Ocean diagnostics remapping)         0.000000
-(Ocean diagnostics grid updates)      0.007361
-(Ocean porous barrier)                0.018648
-(Ocean init message passing)          0.000023
-(Ocean continuity reconstruction      0.318955
-(Ocean continuity update)             0.065513
-(Ocean continuity correction)         1.059763
-(Ocean BT pre-calcs only)             0.267512
-(Ocean BT pre-step halo updates)      0.007200
-(Ocean BT stepping calcs only)        2.330971
-(Ocean BT stepping halo updates)      0.005692
-(Ocean BT post-calcs only)            0.045978
-(Ocean BT post-step halo updates      0.000473
-(Ocean Coriolis & mom advection)      0.763830
-(Ocean continuity equation)           1.458605
-(Ocean pressure force)                0.761984
-(Ocean vertical viscosity)            1.302731
-(Ocean horizontal viscosity)          0.553699
-(Ocean momentum increments)           0.036545
-(Ocean message passing)               0.001861
-(Ocean barotropic mode calc)          0.035789
-(Ocean barotropic mode stepping)      3.017094
-(Ocean barotropic forcing calc)       0.048174
+(Ocean diagnostics grid updates)      0.007206
+(Ocean porous barrier)                0.018506
+(Ocean init message passing)          0.000020
+(Ocean continuity reconstruction      0.320115
+(Ocean continuity update)             0.065527
+(Ocean continuity correction)         1.059488
+(Ocean BT pre-calcs only)             0.266458
+(Ocean BT pre-step halo updates)      0.007067
+(Ocean BT stepping calcs only)        2.325751
+(Ocean BT stepping halo updates)      0.005689
+(Ocean BT post-calcs only)            0.046179
+(Ocean BT post-step halo updates      0.000439
+(Ocean Coriolis & mom advection)      0.760027
+(Ocean continuity equation)           1.458975
+(Ocean pressure force)                0.740230
+(Ocean vertical viscosity)            1.295855
+(Ocean horizontal viscosity)          0.550481
+(Ocean momentum increments)           0.036573
+(Ocean message passing)               0.001830
+(Ocean barotropic mode calc)          0.035939
+(Ocean barotropic mode stepping)      3.005822
+(Ocean barotropic forcing calc)       0.048470
 (Ocean diabatic entrain)              0.000000
-(Ocean vert remap)                    0.007430
-(Ocean set_diffusivity)               0.117332
+(Ocean vert remap)                    0.007547
+(Ocean set_diffusivity)               0.116992
 (Ocean KPP)                           0.000000
-(Ocean tracer_columns)                0.000341
-(Ocean diabatic tridiag)              0.010570
-(Ocean diabatic message passing)      0.000053
+(Ocean tracer_columns)                0.000363
+(Ocean diabatic tridiag)              0.010508
+(Ocean diabatic message passing)      0.000057
 (Ocean find_uv_at_h)                  0.000000
 (Ocean frazil)                        0.000000
-(Ocean advect tracer)                 0.186182
-(Ocean tracer halo updates)           0.000543
-(Ocean tracer global synch)           0.000401
+(Ocean advect tracer)                 0.185919
+(Ocean tracer halo updates)           0.000513
+(Ocean tracer global synch)           0.000419
 (Ocean diffuse tracer)                0.000000
 (Ocean epipycnal diffuse tracer)      0.000000
-(Ocean surface forcing)               0.008895
-(Ocean forcing diagnostics)           0.061600
+(Ocean surface forcing)               0.008397
+(Ocean forcing diagnostics)           0.060499

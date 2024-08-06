@@ -1,7 +1,7 @@
 seamount-z/*.nc
 seamount-sigma/*.nc
-icemount-z-reset/*.nc
+icemount-z/*.nc
 icemount-z-surfcorrect/*.nc
-icemount-sigma-reset/*.nc
+icemount-sigma/*.nc
 icemount-sigma-surfcorrect/*.nc
 */RESTART/*

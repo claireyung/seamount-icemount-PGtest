@@ -468,6 +468,8 @@ ALE_COORDINATE_CONFIG = "UNIFORM" ! default = "UNIFORM"
                                 !                by a comma or space, e.g. FILE:lev.nc,dz
                                 !                or FILE:lev.nc,interfaces=zw
                                 !  WOA09[:N]   - the WOA09 vertical grid (approximately)
+                                !  WOA09INT[:N] - layers spanned by the WOA09 depths
+                                !  WOA23INT[:N] - layers spanned by the WOA23 depths
                                 !  FNC1:string - FNC1:dz_min,H_total,power,precision
                                 !  HYBRID:string - read from a file. The string specifies
                                 !                the filename and two variable names, separated
@@ -518,7 +520,7 @@ REMAP_BOUND_INTERMEDIATE_VALUES = False !   [Boolean] default = False
 REMAP_BOUNDARY_EXTRAP = False   !   [Boolean] default = False
                                 ! If true, values at the interfaces of boundary cells are extrapolated instead
                                 ! of piecewise constant
-INIT_BOUNDARY_EXTRAP = True     !   [Boolean] default = False
+INIT_BOUNDARY_EXTRAP = False    !   [Boolean] default = False
                                 ! If true, values at the interfaces of boundary cells are extrapolated instead
                                 ! of piecewise constant during initialization.Defaults to REMAP_BOUNDARY_EXTRAP.
 REMAPPING_USE_OM4_SUBCELLS = True !   [Boolean] default = True
@@ -758,10 +760,10 @@ SURFACE_PRESSURE_VAR = "D"      ! default = ""
 SURFACE_PRESSURE_SCALE = 8820.0 !   [file dependent] default = 1.0
                                 ! A scaling factor to convert SURFACE_PRESSURE_VAR from file
                                 ! SURFACE_PRESSURE_FILE into a surface pressure.
-TRIM_IC_Z_TOLERANCE = 1.0E-14   !   [m] default = 1.0E-05
+TRIM_IC_Z_TOLERANCE = 1.0E-05   !   [m] default = 1.0E-05
                                 ! The tolerance with which to find the depth matching the specified surface
                                 ! pressure with TRIM_IC_FOR_P_SURF.
-TRIMMING_USES_REMAPPING = True  !   [Boolean] default = False
+TRIMMING_USES_REMAPPING = False !   [Boolean] default = False
                                 ! When trimming the column, also remap T and S.
 REGRID_ACCELERATE_INIT = False  !   [Boolean] default = False
                                 ! If true, runs REGRID_ACCELERATE_ITERATIONS iterations of the regridding
@@ -815,6 +817,8 @@ DIAG_COORD_DEF_Z = "WOA09"      ! default = "WOA09"
                                 !                by a comma or space, e.g. FILE:lev.nc,dz
                                 !                or FILE:lev.nc,interfaces=zw
                                 !  WOA09[:N]   - the WOA09 vertical grid (approximately)
+                                !  WOA09INT[:N] - layers spanned by the WOA09 depths
+                                !  WOA23INT[:N] - layers spanned by the WOA23 depths
                                 !  FNC1:string - FNC1:dz_min,H_total,power,precision
                                 !  HYBRID:string - read from a file. The string specifies
                                 !                the filename and two variable names, separated
@@ -1152,24 +1156,6 @@ RHO_PGF_REF = 1035.0            !   [kg m-3] default = 1035.0
 MASS_WEIGHT_IN_PRESSURE_GRADIENT = False !   [Boolean] default = False
                                 ! If true, use mass weighting when interpolating T/S for integrals near the
                                 ! bathymetry in FV pressure gradient calculations.
-MASS_WEIGHT_IN_PRESSURE_GRADIENT_IS = False !   [Boolean] default = False
-                                ! If true, use mass weighting when interpolating T/S for integrals near the top
-                                ! in FV pressure gradient calculations. Defaults to
-                                ! MASS_WEIGHT_IN_PRESSURE_GRADIENT.
-CORRECTION_INTXPA = True        !   [Boolean] default = False
-                                ! If true, use a correction for surface pressure curvature in intx_pa.
-CORRECTION_INTXPA_5PT = False   !   [Boolean] default = False
-                                ! If true, use 5point quadrature to calculate intxpa. This requires
-                                ! CORRECTION_INTXPA = True.
-RESET_INTXPA_INTEGRAL = True    !   [Boolean] default = False
-                                ! If true, reset INTXPA to match pressures at first nonvanished cell. Includes
-                                ! pressure correction.
-RESET_INTXPA_H_NONVANISHED = 1.0E-06 !   [m] default = 1.0E-06
-                                ! A minimal layer thickness that indicates that a layer is thick enough to
-                                ! usefully reestimate the pressure integral across the interface below.
-RESET_INTXPA_MASS_WEIGHT_CLEARANCE = 1.0E-08 !   [m] default = 1.0E-08
-                                ! A vertical distance between in an interface and the depressed sea surface
-                                ! height in a neighboring cell beyond which the mass-weighting is enabled.
 USE_INACCURATE_PGF_RHO_ANOM = False !   [Boolean] default = False
                                 ! If true, use a form of the PGF that uses the reference density in an
                                 ! inaccurate way. This is not recommended.

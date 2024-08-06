@@ -178,9 +178,6 @@ REMAPPING_SCHEME = "PPM_IH4"    ! default = "PLM"
                                 ! WENO_HYBGEN (3rd-order accurate)
                                 ! PQM_IH4IH3  (4th-order accurate)
                                 ! PQM_IH6IH5  (5th-order accurate)
-INIT_BOUNDARY_EXTRAP = True     !   [Boolean] default = False
-                                ! If true, values at the interfaces of boundary cells are extrapolated instead
-                                ! of piecewise constant during initialization.Defaults to REMAP_BOUNDARY_EXTRAP.
 
 ! === module MOM_domains min_halo ===
 
@@ -268,11 +265,6 @@ SURFACE_PRESSURE_VAR = "D"      ! default = ""
 SURFACE_PRESSURE_SCALE = 8820.0 !   [file dependent] default = 1.0
                                 ! A scaling factor to convert SURFACE_PRESSURE_VAR from file
                                 ! SURFACE_PRESSURE_FILE into a surface pressure.
-TRIM_IC_Z_TOLERANCE = 1.0E-14   !   [m] default = 1.0E-05
-                                ! The tolerance with which to find the depth matching the specified surface
-                                ! pressure with TRIM_IC_FOR_P_SURF.
-TRIMMING_USES_REMAPPING = True  !   [Boolean] default = False
-                                ! When trimming the column, also remap T and S.
 
 ! === module MOM_diag_mediator ===
 
@@ -339,11 +331,6 @@ BOUND_CORIOLIS = True           !   [Boolean] default = False
 ! === module MOM_PressureForce ===
 
 ! === module MOM_PressureForce_FV ===
-CORRECTION_INTXPA = True        !   [Boolean] default = False
-                                ! If true, use a correction for surface pressure curvature in intx_pa.
-RESET_INTXPA_INTEGRAL = True    !   [Boolean] default = False
-                                ! If true, reset INTXPA to match pressures at first nonvanished cell. Includes
-                                ! pressure correction.
 
 ! === module MOM_Zanna_Bolton ===
 
