@@ -4,4 +4,9 @@ icemount-z-reset/*.nc
 icemount-z-surfcorrect/*.nc
 icemount-sigma-reset/*.nc
 icemount-sigma-surfcorrect/*.nc
+icemount*/*.nc
+seamount*/*.nc
+ice*/*.nc
 */RESTART/*
+INPUT/topog*.nc
+*/INPUT/*.nc

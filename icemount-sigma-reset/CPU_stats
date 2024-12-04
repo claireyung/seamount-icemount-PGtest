@@ -1,4 +1,4 @@
-Startup CPU time:        0.305 sec summed across    1 PEs.
+Startup CPU time:        0.259 sec summed across    1 PEs.
          Day, Step number,     CPU time, CPU time change
-       0.000,           0,        0.305,        0.305
-      10.083,         968,       11.944,       11.639
+       0.000,           0,        0.259,        0.259
+      10.083,         968,        9.394,        9.135

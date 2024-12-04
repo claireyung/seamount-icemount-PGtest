@@ -35,7 +35,7 @@ SURFACE_PRESSURE_SCALE = 8820.0 !   [file dependent] default = 1.0
 ! increase drag in min thickness layers
 #override DRAG_BG_VEL_SHELF = 0.05
 
-#override MASS_WEIGHT_IN_PRESSURE_GRADIENT = True !  False
+!#override MASS_WEIGHT_IN_PRESSURE_GRADIENT = True !  False
 !#override MASS_WEIGHT_IN_PRESSURE_GRADIENT_IS = False !True
 
 ! initialise properly (NB this exe has a hardcoded fix. Better to use Alistair's.)
