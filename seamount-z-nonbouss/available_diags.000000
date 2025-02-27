@@ -138,6 +138,12 @@
     ! long_name: heat capacity of sea water
     ! units: J kg-1 K-1
     ! variants: {C_p,cpocean}
+"sqg_struct"  [Unused]
+    ! modules: {ocean_model,ocean_model_z,ocean_model_d2,ocean_model_z_d2}
+    ! long_name: Vertical structure of SQG mode
+    ! units: nondim
+    ! cell_methods: xh:mean yh:mean zl:mean area:mean
+    ! variants: {sqg_struct,sqg_struct_xyave}
 "Rd_dx"  [Unused]
     ! modules: {ocean_model,ocean_model_d2}
     ! long_name: Ratio between deformation radius and grid spacing
@@ -260,30 +266,6 @@
     ! units: m3 s-1
     ! cell_methods: xh:mean yq:point zi:point
     ! variants: {GM_sfn_unlim_y,GM_sfn_unlim_y_xyave}
-"por_layer_widthU"  [Unused]
-    ! modules: {ocean_model,ocean_model_z,ocean_model_d2,ocean_model_z_d2}
-    ! long_name: Porous barrier open width fraction (at the layer interfaces) of the u-faces
-    ! units: nondim
-    ! cell_methods: xq:point yh:mean zi:point
-    ! variants: {por_layer_widthU,por_layer_widthU_xyave}
-"por_layer_widthV"  [Unused]
-    ! modules: {ocean_model,ocean_model_z,ocean_model_d2,ocean_model_z_d2}
-    ! long_name: Porous barrier open width fraction (at the layer interfaces) of the v-faces
-    ! units: nondim
-    ! cell_methods: xh:mean yq:point zi:point
-    ! variants: {por_layer_widthV,por_layer_widthV_xyave}
-"por_face_areaU"  [Unused]
-    ! modules: {ocean_model,ocean_model_z,ocean_model_d2,ocean_model_z_d2}
-    ! long_name: Porous barrier open area fraction (layer averaged) of U-faces
-    ! units: nondim
-    ! cell_methods: xq:point yh:mean zl:mean
-    ! variants: {por_face_areaU,por_face_areaU_xyave}
-"por_face_areaV"  [Unused]
-    ! modules: {ocean_model,ocean_model_z,ocean_model_d2,ocean_model_z_d2}
-    ! long_name: Porous barrier open area fraction (layer averaged) of V-faces
-    ! units: nondim
-    ! cell_methods: xh:mean yq:point zl:mean
-    ! variants: {por_face_areaV,por_face_areaV_xyave}
 "RV"  [Unused]
     ! modules: {ocean_model,ocean_model_d2}
     ! long_name: Relative Vorticity
@@ -406,6 +388,18 @@
     ! units: nondim
     ! cell_methods: xh:mean yq:point zl:mean
     ! variants: {MassWt_v,MassWt_v_xyave}
+"reset_u"  [Unused]
+    ! modules: {ocean_model,ocean_model_z,ocean_model_d2,ocean_model_z_d2}
+    ! long_name: Layer for which bottom is the reset integral position for u PGF
+    ! units: nondim
+    ! cell_methods: xq:point yh:mean zl:mean
+    ! variants: {reset_u,reset_u_xyave}
+"reset_v"  [Unused]
+    ! modules: {ocean_model,ocean_model_z,ocean_model_d2,ocean_model_z_d2}
+    ! long_name: Layer for which bottom is the reset integral position for v PGF
+    ! units: nondim
+    ! cell_methods: xh:mean yq:point zl:mean
+    ! variants: {reset_v,reset_v_xyave}
 "NoSt"  [Unused]
     ! modules: {ocean_model,ocean_model_z,ocean_model_d2,ocean_model_z_d2}
     ! long_name: Normal Stress
@@ -524,6 +518,17 @@
     ! units: W m-2
     ! cell_methods: xh:mean yh:mean area:mean
     ! variants: {FrictWorkIntz,dispkexyfo}
+"FrictWork_bh"  [Unused]
+    ! modules: {ocean_model,ocean_model_z,ocean_model_d2,ocean_model_z_d2}
+    ! long_name: Integral work done by the biharmonic lateral friction terms.
+    ! units: W m-2
+    ! cell_methods: xh:mean yh:mean zl:mean area:mean
+    ! variants: {FrictWork_bh,FrictWork_bh_xyave}
+"FrictWorkIntz_bh"  [Unused]
+    ! modules: {ocean_model,ocean_model_d2}
+    ! long_name: Depth integrated work done by the biharmonic lateral friction
+    ! units: W m-2
+    ! cell_methods: xh:mean yh:mean area:mean
 "Kv_slow"  [Unused]
     ! modules: {ocean_model,ocean_model_z,ocean_model_d2,ocean_model_z_d2}
     ! long_name: Slow varying vertical viscosity

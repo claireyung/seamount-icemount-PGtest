@@ -50,3 +50,4 @@ SURFACE_PRESSURE_SCALE = 8820.0 !   [file dependent] default = 1.0
 !#override RESET_INTXPA_INTEGRAL = True !reqs CORRECTION_INTXPA = True if interior coord is slanted!
 
 #override EQN_OF_STATE = "WRIGHT"
+#override FRAC_DP_AT_POS_NEGATIVE_P_BUGFIX = True

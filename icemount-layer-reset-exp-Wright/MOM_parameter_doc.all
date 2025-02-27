@@ -852,6 +852,9 @@ KV_TBL_MIN = 1.0E-04            !   [m2 s-1] default = 1.0E-04
 CORRECT_BBL_BOUNDS = False      !   [Boolean] default = False
                                 ! If true, uses the correct bounds on the BBL thickness and viscosity so that
                                 ! the bottom layer feels the intended drag.
+RAYLEIGH_DRAG_MINRATE = -1.0    !   [s-1] default = -1.0
+                                ! If > 0, add a Rayleigh drag that increases over timescaleRAYLEIGH_DRAG_TIME to
+                                ! RAYLEIGH_DRAG_MAXRATE
 
 ! === module MOM_thickness_diffuse ===
 KHTH = 500.0                    !   [m2 s-1] default = 0.0

@@ -388,6 +388,18 @@
     ! units: nondim
     ! cell_methods: xh:mean yq:point zl:mean
     ! variants: {MassWt_v,MassWt_v_xyave}
+"reset_u"  [Unused]
+    ! modules: {ocean_model,ocean_model_z,ocean_model_d2,ocean_model_z_d2}
+    ! long_name: Layer for which bottom is the reset integral position for u PGF
+    ! units: nondim
+    ! cell_methods: xq:point yh:mean zl:mean
+    ! variants: {reset_u,reset_u_xyave}
+"reset_v"  [Unused]
+    ! modules: {ocean_model,ocean_model_z,ocean_model_d2,ocean_model_z_d2}
+    ! long_name: Layer for which bottom is the reset integral position for v PGF
+    ! units: nondim
+    ! cell_methods: xh:mean yq:point zl:mean
+    ! variants: {reset_v,reset_v_xyave}
 "NoSt"  [Unused]
     ! modules: {ocean_model,ocean_model_z,ocean_model_d2,ocean_model_z_d2}
     ! long_name: Normal Stress

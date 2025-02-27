@@ -759,6 +759,8 @@ TRIM_IC_FOR_P_SURF = True       !   [Boolean] default = False
                                 ! If true, cuts way the top of the column for initial conditions at the depth
                                 ! where the hydrostatic pressure matches the imposed surface pressure which is
                                 ! read from file.
+HACK_MODE = False               !   [Boolean] default = False
+                                ! HACK MODE
 SURFACE_PRESSURE_FILE = "flatice0.nc" !
                                 ! The initial condition file for the surface pressure exerted by ice.
 SURFACE_PRESSURE_VAR = "D"      ! default = ""

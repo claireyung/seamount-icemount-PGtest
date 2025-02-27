@@ -225,6 +225,7 @@ THICKNESS_CONFIG = "ISOMIP"     ! default = "uniform"
                                 !     uniform - uniform thickness layers evenly distributed
                                 !       between the surface and MAXIMUM_DEPTH.
                                 !     list - read a list of positive interface depths.
+                                !     param - use thicknesses from parameter THICKNESS_INIT_VALUES.
                                 !     DOME - use a slope and channel configuration for the
                                 !       DOME sill-overflow test case.
                                 !     ISOMIP - use a configuration for the
@@ -349,9 +350,15 @@ MASS_WEIGHT_IN_PRESSURE_GRADIENT_TOP = True !   [Boolean] default = False
                                 ! If true and MASS_WEIGHT_IN_PRESSURE_GRADIENT is true, use mass weighting when
                                 ! interpolating T/S for integrals near the top of the water column in FV
                                 ! pressure gradient calculations.
+MASS_WEIGHT_IN_PGF_VANISHED_ONLY = True !   [Boolean] default = False
+                                ! If true, use mass weighting when interpolating T/S for integrals only if one
+                                ! side is vanished according to RESET_INTXPA_H_NONVANISHED.
 RESET_INTXPA_INTEGRAL = True    !   [Boolean] default = False
                                 ! If true, reset INTXPA to match pressures at first nonvanished cell. Includes
                                 ! pressure correction.
+ISOLATE_MASS_WEIGHT_PGF = True  !   [Boolean] default = False
+                                ! If true, don't use MASS_WEIGHT_IN_PRESSURE_GRADIENT intx_dpa to get subsequent
+                                ! intx_pa through summation.
 
 ! === module MOM_Zanna_Bolton ===
 

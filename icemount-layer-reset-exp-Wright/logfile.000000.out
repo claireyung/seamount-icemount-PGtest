@@ -562,6 +562,7 @@ MOM_set_visc: unknown
   MOM_set_visc KV_BBL_MIN: 1.0E-04
   MOM_set_visc KV_TBL_MIN: 1.0E-04
   MOM_set_visc CORRECT_BBL_BOUNDS: False
+  MOM_set_visc RAYLEIGH_DRAG_MINRATE: -1.0
 MOM_thickness_diffuse: unknown
   MOM_thickness_diffuse THICKNESSDIFFUSE: False
   MOM_thickness_diffuse KHTH: 500.0
@@ -1008,66 +1009,66 @@ MOM_Ice_Shelf_in domain decomposition:     1 X    1
    pe,   is,  ie,  js,  je,    isd, ied, jsd, jed
 
                                      time
-Total runtime                        11.936920
-Initialization                        0.291658
-Main loop                            10.767510
-Termination                           0.862609
-Ocean Initialization                  0.295087
-Ocean                                10.450798
-Ocean dynamics                        8.629562
-Ocean thermodynamics and tracers      0.805109
-Ocean Other                           1.003728
-(Ocean tracer advection)              0.254554
-(Ocean diabatic driver)               0.550272
+Total runtime                         8.481544
+Initialization                        0.241213
+Main loop                             7.787650
+Termination                           0.439912
+Ocean Initialization                  0.242497
+Ocean                                 7.561375
+Ocean dynamics                        6.240996
+Ocean thermodynamics and tracers      0.572881
+Ocean Other                           0.739126
+(Ocean tracer advection)              0.186859
+(Ocean diabatic driver)               0.385817
 (Ocean continuity equation *)         0.000000
-(Ocean set BBL viscosity)             0.075248
-(Ocean message passing *)             0.002198
-(Ocean MOM_initialize_state)          0.044408
-(Ocean init message passing *)        0.000750
+(Ocean set BBL viscosity)             0.055836
+(Ocean message passing *)             0.001230
+(Ocean MOM_initialize_state)          0.038540
+(Ocean init message passing *)        0.000273
 (Ocean mixed layer restrat)           0.000000
-(Ocean collective diagnostics)        0.965684
+(Ocean collective diagnostics)        0.713088
 (Ocean Z-space diagnostics)           0.000000
 (Ocean ALE)                           0.000000
-(Stochastic EOS)                      0.000042
-(SGS Temperature Variance)            0.000042
-Ice shelf                             0.171260
+(Stochastic EOS)                      0.000032
+(SGS Temperature Variance)            0.000032
+Ice shelf                             0.126269
  Ice shelf halo updates               0.000003
-(Ocean diagnostics framework)         3.017255
+(Ocean diagnostics framework)         2.184931
 (Ocean diagnostics remapping)         0.000000
-(Ocean diagnostics grid updates)      0.008352
-(Ocean init message passing)          0.000153
-(Ocean continuity reconstruction      0.320150
-(Ocean continuity update)             0.067111
-(Ocean continuity correction)         1.175568
-(Ocean BT pre-calcs only)             0.295917
-(Ocean BT pre-step halo updates)      0.010665
-(Ocean BT stepping calcs only)        2.423981
-(Ocean BT stepping halo updates)      0.006801
-(Ocean BT post-calcs only)            0.051073
-(Ocean BT post-step halo updates      0.000620
-(Ocean Coriolis & mom advection)      0.803998
-(Ocean continuity equation)           1.579495
-(Ocean pressure force)                0.428902
-(Ocean vertical viscosity)            1.348994
-(Ocean horizontal viscosity)          0.646007
-(Ocean momentum increments)           0.038155
-(Ocean message passing)               0.003306
-(Ocean barotropic mode calc)          0.037591
-(Ocean barotropic mode stepping)      3.199262
-(Ocean barotropic forcing calc)       0.053147
-(Ocean diabatic entrain)              0.096604
-(Ocean vert remap)                    0.000129
-(Ocean set_diffusivity)               0.160114
+(Ocean diagnostics grid updates)      0.005775
+(Ocean init message passing)          0.000017
+(Ocean continuity reconstruction      0.237776
+(Ocean continuity update)             0.049791
+(Ocean continuity correction)         0.809236
+(Ocean BT pre-calcs only)             0.205521
+(Ocean BT pre-step halo updates)      0.005855
+(Ocean BT stepping calcs only)        1.812643
+(Ocean BT stepping halo updates)      0.004370
+(Ocean BT post-calcs only)            0.035136
+(Ocean BT post-step halo updates      0.000336
+(Ocean Coriolis & mom advection)      0.587941
+(Ocean continuity equation)           1.107699
+(Ocean pressure force)                0.312694
+(Ocean vertical viscosity)            0.989005
+(Ocean horizontal viscosity)          0.456849
+(Ocean momentum increments)           0.028180
+(Ocean message passing)               0.001486
+(Ocean barotropic mode calc)          0.026681
+(Ocean barotropic mode stepping)      2.340958
+(Ocean barotropic forcing calc)       0.037422
+(Ocean diabatic entrain)              0.070377
+(Ocean vert remap)                    0.000058
+(Ocean set_diffusivity)               0.113958
 (Ocean KPP)                           0.000000
-(Ocean tracer_columns)                0.014805
-(Ocean diabatic tridiag)              0.071456
-(Ocean diabatic message passing)      0.000547
+(Ocean tracer_columns)                0.008930
+(Ocean diabatic tridiag)              0.052271
+(Ocean diabatic message passing)      0.000311
 (Ocean find_uv_at_h)                  0.000000
 (Ocean frazil)                        0.000000
-(Ocean advect tracer)                 0.194803
-(Ocean tracer halo updates)           0.001450
-(Ocean tracer global synch)           0.000943
-(Ocean diffuse tracer)                0.049492
+(Ocean advect tracer)                 0.143834
+(Ocean tracer halo updates)           0.000602
+(Ocean tracer global synch)           0.000308
+(Ocean diffuse tracer)                0.036261
 (Ocean epipycnal diffuse tracer)      0.000000
-(Ocean surface forcing)               0.008889
-(Ocean forcing diagnostics)           0.066818
+(Ocean surface forcing)               0.007323
+(Ocean forcing diagnostics)           0.048825

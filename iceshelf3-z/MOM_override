@@ -74,3 +74,6 @@ SURFACE_PRESSURE_SCALE = 8820.0 !   [file dependent] default = 1.0
 !#override CORRECTION_INTXPA = True
 !#override CORRECTION_INTXPA_5PT = True
 #override RESET_INTXPA_INTEGRAL = True !reqs CORRECTION_INTXPA = True if interior coord is slanted!
+#override MASS_WEIGHT_IN_PGF_VANISHED_ONLY = True
+#override ISOLATE_MASS_WEIGHT_PGF = True
+

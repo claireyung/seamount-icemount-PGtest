@@ -48,6 +48,11 @@
 "ocean_model","temp","temp","progmean","all","mean","none",2
 "ocean_model","salt","salt","progmean","all","mean","none",2
 
+"ocean_model","MassWt_u","MassWt_u","mommean","all","mean","none",1
+"ocean_model","MassWt_v","MassWt_v","mommean","all","mean","none",1
+"ocean_model","reset_u","reset_u","mommean","all","mean","none",1
+"ocean_model","reset_v","reset_v","mommean","all","mean","none",1
+
 #"ocean_model","RV","RV","prog","all",.false.,"none",2
 #"ocean_model","PV","PV","prog","all",.false.,"none",2
 #"ocean_model","e_D","e_D","prog","all",.false.,"none",2

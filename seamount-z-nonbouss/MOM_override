@@ -3,7 +3,7 @@
 #override REGRIDDING_COORDINATE_MODE = "ZSTAR"! "SIGMA"!ZSTAR"! "ZSTAR"! "ZSTAR"!"RHO"!SIGMA"!ZSTAR"! "ZSTAR" 
 #override REMAPPING_SCHEME = "PPM_IH4"
 ! modify minthick
-#override MIN_THICKNESS = 1E-12 !3 !12 !3 !12 !3 !12
+#override MIN_THICKNESS =0.1 ! 1E-3 !12 !3 !12 !3 !12 !3 !12
 
 ! Domain info: make bottom flat
 !#override TOPO_CONFIG = "flat"
@@ -37,6 +37,7 @@ SURFACE_PRESSURE_SCALE = 8820.0 !   [file dependent] default = 1.0
 
 #override MASS_WEIGHT_IN_PRESSURE_GRADIENT = True !  False
 #override MASS_WEIGHT_IN_PRESSURE_GRADIENT_TOP = True !True
+!#override MASS_WEIGHT_IN_PGF_NONBOUS_BUG = True
 
 ! initialise properly (NB this exe has a hardcoded fix. Better to use Alistair's.)
 #override REMAP_BOUNDARY_EXTRAP = False
@@ -45,11 +46,19 @@ SURFACE_PRESSURE_SCALE = 8820.0 !   [file dependent] default = 1.0
 #override TRIM_IC_Z_TOLERANCE = 1.e-14
 
 ! PG correction turned on
-#override CORRECTION_INTXPA = True
+!#override CORRECTION_INTXPA = True
 !#override CORRECTION_INTXPA_5PT = True
 #override RESET_INTXPA_INTEGRAL = True !reqs CORRECTION_INTXPA = True if interior coord is slanted!
 
 ! Use Boussinesq
 #override BOUSSINESQ = False
 #override SEMI_BOUSSINESQ = False
+
+#override MASS_WEIGHT_IN_PGF_VANISHED_ONLY = True
+#override ISOLATE_MASS_WEIGHT_PGF = True
+
+#override HARMONIC_BL_SCALE = 1
+
+#override REMAPPING_USE_OM4_SUBCELLS = False
+#override DIAG_REMAPPING_USE_OM4_SUBCELLS = False
 

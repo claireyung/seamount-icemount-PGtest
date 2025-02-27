@@ -374,12 +374,9 @@ RESTART_CHECKSUMS_REQUIRED = True !   [Boolean] default = True
                                 ! may want to avoid this comparison if for example the restarts are made from a
                                 ! run with a different mask_table than the current run, in which case the
                                 ! checksums will not match and cause crash.
-STREAMING_FILTER_M2 = False     !   [Boolean] default = False
-                                ! If true, turn on streaming band-pass filter for detecting instantaneous tidal
-                                ! signals.
-STREAMING_FILTER_K1 = False     !   [Boolean] default = False
-                                ! If true, turn on streaming band-pass filter for detecting instantaneous tidal
-                                ! signals.
+USE_FILTER = False              !   [Boolean] default = False
+                                ! If true, use streaming band-pass filters to detect the instantaneous tidal
+                                ! signals in the simulation.
 
 ! === module MOM_tracer_flow_control ===
 USE_USER_TRACER_EXAMPLE = False !   [Boolean] default = False
@@ -707,6 +704,7 @@ THICKNESS_CONFIG = "ISOMIP"     ! default = "uniform"
                                 !     uniform - uniform thickness layers evenly distributed
                                 !       between the surface and MAXIMUM_DEPTH.
                                 !     list - read a list of positive interface depths.
+                                !     param - use thicknesses from parameter THICKNESS_INIT_VALUES.
                                 !     DOME - use a slope and channel configuration for the
                                 !       DOME sill-overflow test case.
                                 !     ISOMIP - use a configuration for the
@@ -771,6 +769,9 @@ SURFACE_PRESSURE_SCALE = 8820.0 !   [file dependent] default = 1.0
 TRIM_IC_Z_TOLERANCE = 1.0E-14   !   [m] default = 1.0E-05
                                 ! The tolerance with which to find the depth matching the specified surface
                                 ! pressure with TRIM_IC_FOR_P_SURF.
+FRAC_DP_AT_POS_NEGATIVE_P_BUGFIX = False !   [Boolean] default = False
+                                ! If true, use bugfix in ice shelf TRIM_IC initialization. Otherwise, pressure
+                                ! input to density EOS is negative.
 TRIMMING_USES_REMAPPING = True  !   [Boolean] default = False
                                 ! When trimming the column, also remap T and S.
 REGRID_ACCELERATE_INIT = False  !   [Boolean] default = False
@@ -1172,11 +1173,17 @@ MASS_WEIGHT_IN_PRESSURE_GRADIENT_TOP = True !   [Boolean] default = False
                                 ! If true and MASS_WEIGHT_IN_PRESSURE_GRADIENT is true, use mass weighting when
                                 ! interpolating T/S for integrals near the top of the water column in FV
                                 ! pressure gradient calculations.
+MASS_WEIGHT_IN_PGF_VANISHED_ONLY = True !   [Boolean] default = False
+                                ! If true, use mass weighting when interpolating T/S for integrals only if one
+                                ! side is vanished according to RESET_INTXPA_H_NONVANISHED.
 CORRECTION_INTXPA = False       !   [Boolean] default = False
                                 ! If true, use a correction for surface pressure curvature in intx_pa.
 RESET_INTXPA_INTEGRAL = True    !   [Boolean] default = False
                                 ! If true, reset INTXPA to match pressures at first nonvanished cell. Includes
                                 ! pressure correction.
+ISOLATE_MASS_WEIGHT_PGF = True  !   [Boolean] default = False
+                                ! If true, don't use MASS_WEIGHT_IN_PRESSURE_GRADIENT intx_dpa to get subsequent
+                                ! intx_pa through summation.
 RESET_INTXPA_H_NONVANISHED = 1.0E-06 !   [m] default = 1.0E-06
                                 ! A minimal layer thickness that indicates that a layer is thick enough to
                                 ! usefully reestimate the pressure integral across the interface below.
@@ -1287,7 +1294,7 @@ VON_KARMAN_CONST = 0.41         !   [nondim] default = 0.41
 HARMONIC_VISC = False           !   [Boolean] default = False
                                 ! If true, use the harmonic mean thicknesses for calculating the vertical
                                 ! viscosity.
-HARMONIC_BL_SCALE = 0.0         !   [nondim] default = 0.0
+HARMONIC_BL_SCALE = 10.0        !   [nondim] default = 0.0
                                 ! A scale to determine when water is in the boundary layers based solely on
                                 ! harmonic mean thicknesses for the purpose of determining the extent to which
                                 ! the thicknesses used in the viscosities are upwinded.
@@ -1520,7 +1527,7 @@ EVAP_CFL_LIMIT = 0.8            !   [nondim] default = 0.8
                                 ! The largest fraction of a layer than can be lost to forcing (e.g. evaporation,
                                 ! sea-ice formation) in one time-step. The unused mass loss is passed down
                                 ! through the column.
-MLD_EN_VALS = 3*0.0             !   [J/m2] default = 0.0
+MLD_EN_VALS = 25.0, 2500.0, 2.5E+05 !   [J/m2] default = 25.0, 2500.0, 2.5E+05
                                 ! The energy values used to compute MLDs.  If not set (or all set to 0.), the
                                 ! default will overwrite to 25., 2500., 250000.
 DIAG_MLD_DENSITY_DIFF = 0.1     !   [kg/m3] default = 0.1
@@ -1841,8 +1848,7 @@ BUOY_CONFIG = "NONE"            ! default = "zero"
 WIND_CONFIG = "zero"            ! default = "zero"
                                 ! The character string that indicates how wind forcing is specified.  Valid
                                 ! options include (file), (data_override), (2gyre), (1gyre), (gyres), (zero),
-                                ! (const), (Neverworld), (scurves), (ideal_hurr), (SCM_ideal_hurr),
-                                ! (SCM_CVmix_tests) and (USER).
+                                ! (const), (Neverworld), (scurves), (ideal_hurr), (SCM_CVmix_tests) and (USER).
 RESTOREBUOY = False             !   [Boolean] default = False
                                 ! If true, the buoyancy fluxes drive the model back toward some specified
                                 ! surface state with a rate given by FLUXCONST.

@@ -206,6 +206,7 @@ THICKNESS_CONFIG = "ISOMIP"     ! default = "uniform"
                                 !     uniform - uniform thickness layers evenly distributed
                                 !       between the surface and MAXIMUM_DEPTH.
                                 !     list - read a list of positive interface depths.
+                                !     param - use thicknesses from parameter THICKNESS_INIT_VALUES.
                                 !     DOME - use a slope and channel configuration for the
                                 !       DOME sill-overflow test case.
                                 !     ISOMIP - use a configuration for the
@@ -254,9 +255,12 @@ SURFACE_PRESSURE_VAR = "D"      ! default = ""
 SURFACE_PRESSURE_SCALE = 8820.0 !   [file dependent] default = 1.0
                                 ! A scaling factor to convert SURFACE_PRESSURE_VAR from file
                                 ! SURFACE_PRESSURE_FILE into a surface pressure.
-TRIM_IC_Z_TOLERANCE = 1.0E-10   !   [m] default = 1.0E-05
+TRIM_IC_Z_TOLERANCE = 1.0E-12   !   [m] default = 1.0E-05
                                 ! The tolerance with which to find the depth matching the specified surface
                                 ! pressure with TRIM_IC_FOR_P_SURF.
+FRAC_DP_AT_POS_NEGATIVE_P_BUGFIX = True !   [Boolean] default = False
+                                ! If true, use bugfix in ice shelf TRIM_IC initialization. Otherwise, pressure
+                                ! input to density EOS is negative.
 TRIMMING_USES_REMAPPING = True  !   [Boolean] default = False
                                 ! When trimming the column, also remap T and S.
 

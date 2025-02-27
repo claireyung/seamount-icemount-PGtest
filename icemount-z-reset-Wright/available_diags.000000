@@ -1345,7 +1345,7 @@
     ! units: kg m-3
     ! cell_methods: xh:mean yh:mean zl:mean area:mean
     ! variants: {Rho_cv,Rho_cv_xyave}
-"rhopot0"  [Unused]
+"rhopot0"  [Used]
     ! modules: {ocean_model,ocean_model_z,ocean_model_d2,ocean_model_z_d2}
     ! long_name: Potential density referenced to surface
     ! units: kg m-3
@@ -1357,7 +1357,7 @@
     ! units: kg m-3
     ! cell_methods: xh:mean yh:mean zl:mean area:mean
     ! variants: {rhopot2,rhopot2_xyave}
-"rhoinsitu"  [Unused]
+"rhoinsitu"  [Used]
     ! modules: {ocean_model,ocean_model_z,ocean_model_d2,ocean_model_z_d2}
     ! long_name: In situ density
     ! units: kg m-3

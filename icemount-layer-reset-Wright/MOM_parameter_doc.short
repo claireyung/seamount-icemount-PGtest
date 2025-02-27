@@ -162,7 +162,7 @@ ICE_AREA_VARNAME = "Ah"         ! default = "area_shelf_h"
                                 ! The name of the area variable in ICE_THICKNESS_FILE.
 
 ! === module MOM_state_initialization ===
-THICKNESS_CONFIG = "seamount"   ! default = "uniform"
+THICKNESS_CONFIG = "ISOMIP"     ! default = "uniform"
                                 ! A string that determines how the initial layer thicknesses are specified for a
                                 ! new run:
                                 !     file - read interface heights from the file specified
@@ -175,6 +175,7 @@ THICKNESS_CONFIG = "seamount"   ! default = "uniform"
                                 !     uniform - uniform thickness layers evenly distributed
                                 !       between the surface and MAXIMUM_DEPTH.
                                 !     list - read a list of positive interface depths.
+                                !     param - use thicknesses from parameter THICKNESS_INIT_VALUES.
                                 !     DOME - use a slope and channel configuration for the
                                 !       DOME sill-overflow test case.
                                 !     ISOMIP - use a configuration for the
@@ -193,7 +194,7 @@ THICKNESS_CONFIG = "seamount"   ! default = "uniform"
                                 !     rossby_front - a mixed layer front in thermal wind balance.
                                 !     USER - call a user modified routine.
 MIN_THICKNESS = 1.0E-12         !   [m] default = 0.001
-                                ! Minimum thickness for layer
+                                ! Minimum layer thickness
 TS_CONFIG = "ISOMIP"            !
                                 ! A string that determines how the initial temperatures and salinities are
                                 ! specified for a new run:
@@ -232,6 +233,12 @@ SURFACE_PRESSURE_VAR = "D"      ! default = ""
 SURFACE_PRESSURE_SCALE = 8820.0 !   [file dependent] default = 1.0
                                 ! A scaling factor to convert SURFACE_PRESSURE_VAR from file
                                 ! SURFACE_PRESSURE_FILE into a surface pressure.
+TRIM_IC_Z_TOLERANCE = 1.0E-10   !   [m] default = 1.0E-05
+                                ! The tolerance with which to find the depth matching the specified surface
+                                ! pressure with TRIM_IC_FOR_P_SURF.
+FRAC_DP_AT_POS_NEGATIVE_P_BUGFIX = True !   [Boolean] default = False
+                                ! If true, use bugfix in ice shelf TRIM_IC initialization. Otherwise, pressure
+                                ! input to density EOS is negative.
 
 ! === module MOM_diag_mediator ===
 
@@ -263,8 +270,6 @@ KV = 1.0E-04                    !   [m2 s-1]
                                 ! m2 s-1, may be used.
 
 ! === module MOM_thickness_diffuse ===
-KHTH = 500.0                    !   [m2 s-1] default = 0.0
-                                ! The background horizontal thickness diffusivity.
 
 ! === module MOM_dynamics_split_RK2 ===
 BE = 0.7                        !   [nondim] default = 0.6

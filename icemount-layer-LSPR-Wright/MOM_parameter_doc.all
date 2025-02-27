@@ -560,7 +560,7 @@ FATAL_INCONSISTENT_RESTART_TIME = False !   [Boolean] default = False
 INIT_LAYERS_FROM_Z_FILE = False !   [Boolean] default = False
                                 ! If true, initialize the layer thicknesses, temperatures, and salinities from a
                                 ! Z-space file on a latitude-longitude grid.
-THICKNESS_CONFIG = "seamount"   ! default = "uniform"
+THICKNESS_CONFIG = "ISOMIP"     ! default = "uniform"
                                 ! A string that determines how the initial layer thicknesses are specified for a
                                 ! new run:
                                 !     file - read interface heights from the file specified
@@ -573,6 +573,7 @@ THICKNESS_CONFIG = "seamount"   ! default = "uniform"
                                 !     uniform - uniform thickness layers evenly distributed
                                 !       between the surface and MAXIMUM_DEPTH.
                                 !     list - read a list of positive interface depths.
+                                !     param - use thicknesses from parameter THICKNESS_INIT_VALUES.
                                 !     DOME - use a slope and channel configuration for the
                                 !       DOME sill-overflow test case.
                                 !     ISOMIP - use a configuration for the
@@ -591,10 +592,15 @@ THICKNESS_CONFIG = "seamount"   ! default = "uniform"
                                 !     rossby_front - a mixed layer front in thermal wind balance.
                                 !     USER - call a user modified routine.
 MIN_THICKNESS = 1.0E-12         !   [m] default = 0.001
-                                ! Minimum thickness for layer
-INTERFACE_IC_QUANTA = 2048.0    !   [m-1] default = 2048.0
-                                ! The granularity of initial interface height values per meter, to avoid
-                                ! sensivity to order-of-arithmetic changes.
+                                ! Minimum layer thickness
+ISOMIP_T_SUR = -1.9             !   [degC] default = -1.9
+                                ! Temperature at the surface (interface)
+ISOMIP_S_SUR = 33.8             !   [ppt] default = 33.8
+                                ! Salinity at the surface (interface)
+ISOMIP_T_BOT = -1.9             !   [degC] default = -1.9
+                                ! Temperature at the bottom (interface)
+ISOMIP_S_BOT = 34.55            !   [ppt] default = 34.55
+                                ! Salinity at the bottom (interface)
 TS_CONFIG = "ISOMIP"            !
                                 ! A string that determines how the initial temperatures and salinities are
                                 ! specified for a new run:
@@ -615,14 +621,6 @@ TS_CONFIG = "ISOMIP"            !
                                 !     rossby_front - a mixed layer front in thermal wind balance.
                                 !     SCM_CVMix_tests - used in the SCM CVMix tests.
                                 !     USER - call a user modified routine.
-ISOMIP_T_SUR = -1.9             !   [degC] default = -1.9
-                                ! Temperature at the surface (interface)
-ISOMIP_S_SUR = 33.8             !   [ppt] default = 33.8
-                                ! Salinity at the surface (interface)
-ISOMIP_T_BOT = -1.9             !   [degC] default = -1.9
-                                ! Temperature at the bottom (interface)
-ISOMIP_S_BOT = 34.55            !   [ppt] default = 34.55
-                                ! Salinity at the bottom (interface)
 FIT_SALINITY = True             !   [Boolean] default = False
                                 ! If true, accept the prescribed temperature and fit the salinity; otherwise
                                 ! take salinity and fit temperature.
@@ -637,8 +635,6 @@ TRIM_IC_FOR_P_SURF = True       !   [Boolean] default = False
                                 ! If true, cuts way the top of the column for initial conditions at the depth
                                 ! where the hydrostatic pressure matches the imposed surface pressure which is
                                 ! read from file.
-HACK_MODE = False               !   [Boolean] default = False
-                                ! HACK MODE
 SURFACE_PRESSURE_FILE = "fatseamountice.nc" !
                                 ! The initial condition file for the surface pressure exerted by ice.
 SURFACE_PRESSURE_VAR = "D"      ! default = ""
@@ -646,9 +642,12 @@ SURFACE_PRESSURE_VAR = "D"      ! default = ""
 SURFACE_PRESSURE_SCALE = 8820.0 !   [file dependent] default = 1.0
                                 ! A scaling factor to convert SURFACE_PRESSURE_VAR from file
                                 ! SURFACE_PRESSURE_FILE into a surface pressure.
-TRIM_IC_Z_TOLERANCE = 1.0E-05   !   [m] default = 1.0E-05
+TRIM_IC_Z_TOLERANCE = 1.0E-10   !   [m] default = 1.0E-05
                                 ! The tolerance with which to find the depth matching the specified surface
                                 ! pressure with TRIM_IC_FOR_P_SURF.
+FRAC_DP_AT_POS_NEGATIVE_P_BUGFIX = True !   [Boolean] default = False
+                                ! If true, use bugfix in ice shelf TRIM_IC initialization. Otherwise, pressure
+                                ! input to density EOS is negative.
 TRIMMING_USES_REMAPPING = False !   [Boolean] default = False
                                 ! When trimming the column, also remap T and S.
 VELOCITY_CONFIG = "zero"        ! default = "zero"
@@ -863,7 +862,7 @@ CORRECT_BBL_BOUNDS = False      !   [Boolean] default = False
                                 ! the bottom layer feels the intended drag.
 
 ! === module MOM_thickness_diffuse ===
-KHTH = 500.0                    !   [m2 s-1] default = 0.0
+KHTH = 0.0                      !   [m2 s-1] default = 0.0
                                 ! The background horizontal thickness diffusivity.
 READ_KHTH = False               !   [Boolean] default = False
                                 ! If true, read a file (given by KHTH_FILE) containing the spatially varying
@@ -1393,7 +1392,7 @@ EVAP_CFL_LIMIT = 0.8            !   [nondim] default = 0.8
                                 ! The largest fraction of a layer than can be lost to forcing (e.g. evaporation,
                                 ! sea-ice formation) in one time-step. The unused mass loss is passed down
                                 ! through the column.
-MLD_EN_VALS = 3*0.0             !   [J/m2] default = 0.0
+MLD_EN_VALS = 25.0, 2500.0, 2.5E+05 !   [J/m2] default = 25.0, 2500.0, 2.5E+05
                                 ! The energy values used to compute MLDs.  If not set (or all set to 0.), the
                                 ! default will overwrite to 25., 2500., 250000.
 DIAG_MLD_DENSITY_DIFF = 0.1     !   [kg/m3] default = 0.1
@@ -1721,8 +1720,7 @@ BUOY_CONFIG = "NONE"            ! default = "zero"
 WIND_CONFIG = "zero"            ! default = "zero"
                                 ! The character string that indicates how wind forcing is specified.  Valid
                                 ! options include (file), (data_override), (2gyre), (1gyre), (gyres), (zero),
-                                ! (const), (Neverworld), (scurves), (ideal_hurr), (SCM_ideal_hurr),
-                                ! (SCM_CVmix_tests) and (USER).
+                                ! (const), (Neverworld), (scurves), (ideal_hurr), (SCM_CVmix_tests) and (USER).
 RESTOREBUOY = False             !   [Boolean] default = False
                                 ! If true, the buoyancy fluxes drive the model back toward some specified
                                 ! surface state with a rate given by FLUXCONST.

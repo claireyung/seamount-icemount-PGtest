@@ -523,6 +523,7 @@ MOM_state_initialization: unknown
   ISOMIP_initialization ISOMIP_S_BOT: 34.55
   MOM_state_initialization DEPRESS_INITIAL_SURFACE: False
   MOM_state_initialization TRIM_IC_FOR_P_SURF: True
+  MOM_state_initialization HACK_MODE: False
   trim_for_ice SURFACE_PRESSURE_FILE: flatice0.nc
   trim_for_ice SURFACE_PRESSURE_VAR: D
   trim_for_ice !INPUTDIR/SURFACE_HEIGHT_IC_FILE: INPUT/flatice0.nc
@@ -1042,66 +1043,66 @@ MOM_Ice_Shelf_in domain decomposition:     1 X    1
    pe,   is,  ie,  js,  je,    isd, ied, jsd, jed
 
                                      time
-Total runtime                         9.336579
-Initialization                        0.249621
-Main loop                             8.678174
-Termination                           0.393915
-Ocean Initialization                  0.250528
-Ocean                                 8.447609
-Ocean dynamics                        6.550314
-Ocean thermodynamics and tracers      1.173376
-Ocean Other                           0.715434
-(Ocean tracer advection)              0.189926
-(Ocean diabatic driver)               0.983245
+Total runtime                        10.289318
+Initialization                        0.248866
+Main loop                             9.532354
+Termination                           0.493367
+Ocean Initialization                  0.248537
+Ocean                                 9.272666
+Ocean dynamics                        7.184952
+Ocean thermodynamics and tracers      1.261734
+Ocean Other                           0.815222
+(Ocean tracer advection)              0.205259
+(Ocean diabatic driver)               1.056194
 (Ocean continuity equation *)         0.000000
-(Ocean set BBL viscosity)             0.058851
-(Ocean message passing *)             0.002080
-(Ocean MOM_initialize_state)          0.036273
-(Ocean init message passing *)        0.000562
+(Ocean set BBL viscosity)             0.063072
+(Ocean message passing *)             0.003206
+(Ocean MOM_initialize_state)          0.037664
+(Ocean init message passing *)        0.000221
 (Ocean mixed layer restrat)           0.000000
-(Ocean collective diagnostics)        0.688665
+(Ocean collective diagnostics)        0.784647
 (Ocean Z-space diagnostics)           0.000000
-(Ocean ALE)                           0.832326
+(Ocean ALE)                           0.885086
 (Stochastic EOS)                      0.000033
-(SGS Temperature Variance)            0.000031
-Ice shelf                             0.128561
- Ice shelf halo updates               0.000002
-(Ocean diagnostics framework)         2.026660
+(SGS Temperature Variance)            0.000032
+Ice shelf                             0.147334
+ Ice shelf halo updates               0.000004
+(Ocean diagnostics framework)         2.306137
 (Ocean diagnostics remapping)         0.000000
-(Ocean diagnostics grid updates)      0.005727
-(Ocean init message passing)          0.000015
-(Ocean continuity reconstruction      0.243928
-(Ocean continuity update)             0.050235
-(Ocean continuity correction)         0.815502
-(Ocean BT pre-calcs only)             0.209649
-(Ocean BT pre-step halo updates)      0.005975
-(Ocean BT stepping calcs only)        1.792030
-(Ocean BT stepping halo updates)      0.004352
-(Ocean BT post-calcs only)            0.035418
-(Ocean BT post-step halo updates      0.000364
-(Ocean Coriolis & mom advection)      0.582980
-(Ocean continuity equation)           1.120651
-(Ocean pressure force)                0.644073
-(Ocean vertical viscosity)            0.985132
-(Ocean horizontal viscosity)          0.446368
-(Ocean momentum increments)           0.028128
-(Ocean message passing)               0.001746
-(Ocean barotropic mode calc)          0.027628
-(Ocean barotropic mode stepping)      2.323767
-(Ocean barotropic forcing calc)       0.037386
+(Ocean diagnostics grid updates)      0.007364
+(Ocean init message passing)          0.000022
+(Ocean continuity reconstruction      0.261500
+(Ocean continuity update)             0.052754
+(Ocean continuity correction)         0.878394
+(Ocean BT pre-calcs only)             0.245040
+(Ocean BT pre-step halo updates)      0.008922
+(Ocean BT stepping calcs only)        1.880236
+(Ocean BT stepping halo updates)      0.005565
+(Ocean BT post-calcs only)            0.039325
+(Ocean BT post-step halo updates      0.000493
+(Ocean Coriolis & mom advection)      0.653617
+(Ocean continuity equation)           1.206625
+(Ocean pressure force)                0.680374
+(Ocean vertical viscosity)            1.111299
+(Ocean horizontal viscosity)          0.515371
+(Ocean momentum increments)           0.030919
+(Ocean message passing)               0.003250
+(Ocean barotropic mode calc)          0.030988
+(Ocean barotropic mode stepping)      2.512952
+(Ocean barotropic forcing calc)       0.041356
 (Ocean diabatic entrain)              0.000000
-(Ocean vert remap)                    0.005691
-(Ocean set_diffusivity)               0.113683
+(Ocean vert remap)                    0.006312
+(Ocean set_diffusivity)               0.121349
 (Ocean KPP)                           0.000000
-(Ocean tracer_columns)                0.000319
-(Ocean diabatic tridiag)              0.008123
-(Ocean diabatic message passing)      0.000069
+(Ocean tracer_columns)                0.000663
+(Ocean diabatic tridiag)              0.008871
+(Ocean diabatic message passing)      0.000072
 (Ocean find_uv_at_h)                  0.000000
 (Ocean frazil)                        0.000000
-(Ocean advect tracer)                 0.146765
-(Ocean tracer halo updates)           0.000666
-(Ocean tracer global synch)           0.000508
-(Ocean diffuse tracer)                0.036374
+(Ocean advect tracer)                 0.158196
+(Ocean tracer halo updates)           0.001387
+(Ocean tracer global synch)           0.000818
+(Ocean diffuse tracer)                0.038499
 (Ocean epipycnal diffuse tracer)      0.000000
-(Ocean surface forcing)               0.007465
-(Ocean forcing diagnostics)           0.049584
+(Ocean surface forcing)               0.007336
+(Ocean forcing diagnostics)           0.053630

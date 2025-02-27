@@ -54,3 +54,6 @@ SURFACE_PRESSURE_SCALE = 8820.0 !   [file dependent] default = 1.0
 #override BOUSSINESQ = False
 #override SEMI_BOUSSINESQ = False
 
+#override MASS_WEIGHT_IN_PGF_VANISHED_ONLY = True
+#override ISOLATE_MASS_WEIGHT_PGF = True
+

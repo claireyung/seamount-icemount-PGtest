@@ -226,6 +226,7 @@ THICKNESS_CONFIG = "ISOMIP"     ! default = "uniform"
                                 !     uniform - uniform thickness layers evenly distributed
                                 !       between the surface and MAXIMUM_DEPTH.
                                 !     list - read a list of positive interface depths.
+                                !     param - use thicknesses from parameter THICKNESS_INIT_VALUES.
                                 !     DOME - use a slope and channel configuration for the
                                 !       DOME sill-overflow test case.
                                 !     ISOMIP - use a configuration for the
@@ -313,8 +314,6 @@ KV = 1.0E-04                    !   [m2 s-1]
 KHTH = 500.0                    !   [m2 s-1] default = 0.0
                                 ! The background horizontal thickness diffusivity.
 
-! === module MOM_porous_barriers ===
-
 ! === module MOM_dynamics_split_RK2 ===
 BE = 0.7                        !   [nondim] default = 0.6
                                 ! If SPLIT is true, BE determines the relative weighting of a  2nd-order
@@ -345,11 +344,17 @@ BOUND_CORIOLIS = True           !   [Boolean] default = False
 ! === module MOM_PressureForce ===
 
 ! === module MOM_PressureForce_FV ===
+MASS_WEIGHT_IN_PGF_VANISHED_ONLY = True !   [Boolean] default = False
+                                ! If true, use mass weighting when interpolating T/S for integrals only if one
+                                ! side is vanished according to RESET_INTXPA_H_NONVANISHED.
 CORRECTION_INTXPA = True        !   [Boolean] default = False
                                 ! If true, use a correction for surface pressure curvature in intx_pa.
 RESET_INTXPA_INTEGRAL = True    !   [Boolean] default = False
                                 ! If true, reset INTXPA to match pressures at first nonvanished cell. Includes
                                 ! pressure correction.
+ISOLATE_MASS_WEIGHT_PGF = True  !   [Boolean] default = False
+                                ! If true, don't use MASS_WEIGHT_IN_PRESSURE_GRADIENT intx_dpa to get subsequent
+                                ! intx_pa through summation.
 
 ! === module MOM_Zanna_Bolton ===
 
